@@ -24,9 +24,28 @@ def read_data(file_name):
             i = i + 1
         return data
 
+
+def selection_sort(seznam):
+    middle_man = 0
+    delka = len(seznam)
+    for i in range(delka - 1):
+        min = i
+        for j in range(i + 1, delka):
+            if seznam[j] < seznam[min]:
+                min = j
+        middle_man = seznam[i]
+        seznam[i] = seznam[min]
+        seznam[min] = middle_man
+
+    return seznam
+
+
+
 def main():
     cus = read_data("numbers.csv")
-    print(cus)
+    seznam = cus["series_1"]
+    selection_sort(seznam)
+    print(seznam)
 
 
 if __name__ == '__main__':
