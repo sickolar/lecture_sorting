@@ -25,14 +25,20 @@ def read_data(file_name):
         return data
 
 
-def selection_sort(seznam):
+def selection_sort(seznam, direction):
     middle_man = 0
     delka = len(seznam)
     for i in range(delka - 1):
         min = i
         for j in range(i + 1, delka):
-            if seznam[j] < seznam[min]:
-                min = j
+            if direction == "vzestupne":
+                if seznam[j] < seznam[min]:
+                    min = j
+            elif direction == "sestupne":
+                if seznam[j] > seznam[min]:
+                    min = j
+            else:
+                return print("Spatna direction")
         middle_man = seznam[i]
         seznam[i] = seznam[min]
         seznam[min] = middle_man
@@ -44,7 +50,7 @@ def selection_sort(seznam):
 def main():
     cus = read_data("numbers.csv")
     seznam = cus["series_1"]
-    selection_sort(seznam)
+    selection_sort(seznam,"sestupne")
     print(seznam)
 
 
