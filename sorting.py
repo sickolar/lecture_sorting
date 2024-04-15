@@ -25,7 +25,7 @@ def read_data(file_name):
         return data
 
 
-def selection_sort(seznam, direction):
+def selection_sort(seznam, direction = "vzestupne"):
     middle_man = 0
     delka = len(seznam)
     for i in range(delka - 1):
@@ -46,12 +46,28 @@ def selection_sort(seznam, direction):
     return seznam
 
 
+def bubble_sort(seznam):
+    delka = len(seznam)
+    sorted = 0
+    for i in range(delka):
+        sorted = 1
+        for j in range(delka - i - 1):
+            if seznam[j] > seznam[j + 1]:
+                seznam[j], seznam[j + 1] = seznam[j + 1], seznam[j]
+                sorted = 0
+        if sorted == 1:
+            break
+    return seznam
+
+
 
 def main():
     cus = read_data("numbers.csv")
     seznam = cus["series_1"]
-    selection_sort(seznam,"sestupne")
+    selection_sort(seznam)
+    bublinka = bubble_sort(seznam)
     print(seznam)
+    print(bublinka)
 
 
 if __name__ == '__main__':
