@@ -60,14 +60,26 @@ def bubble_sort(seznam):
     return seznam
 
 
-
+def insertion_sort(seznam):
+    delka = len(seznam)
+    for i in range(1, delka):
+        j = i - 1
+        kontrola = seznam[i]
+        while j >= 0 and kontrola < seznam[j]:
+            seznam[j + 1] = seznam[j]
+            j = j - 1
+        seznam[j + 1] = kontrola
+    return seznam
 def main():
     cus = read_data("numbers.csv")
     seznam = cus["series_1"]
-    selection_sort(seznam)
-    bublinka = bubble_sort(seznam)
     print(seznam)
+    bublinka = bubble_sort(seznam)
     print(bublinka)
+    seznam_2 = cus["series_2"]
+    print(seznam_2)
+    inserti = insertion_sort(seznam_2)
+    print(seznam_2)
 
 
 if __name__ == '__main__':
